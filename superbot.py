@@ -11,17 +11,17 @@ async def on_ready():
     print ("Bot is ready.")
     print ("User: " + bot.user.name)
     print ("ID: " + bot.user.id)
-    await bot.change_presence(game=discord.Game(name="Quiz-Dog | -help"))
+    await bot.change_presence(game=discord.Game(name="Quiz-Dog | !help"))
 
 @bot.event
 async def on_message(message):
     if message.content.startswith("-help"):
-        embed = discord.Embed(title="Quiz-Dog", description="<@%s>: Commands" % message.author.id, color=0x7289DA, icon='https://images.emojiterra.com/google/android-oreo/512px/1f171.png')
+        embed = discord.Embed(title="Quiz-Dog", description="<@%s>: Commands" % message.author.id, color=0x7289DA, icon='https://i.imgur.com/K7rEGgK.jpg')
         embed.set_thumbnail(url="https://images.emojiterra.com/google/android-oreo/512px/1f171.png")
-        embed.add_field(name='**-help**', value="shows this command with bad gui :stuck_out_tongue:\n`Syntax: -help`\n")
-        embed.add_field(name='**-life**', value="send a life through the Quiz-Dog!\n`Syntax: -life <phone>`\n")
-        embed.add_field(name='**-confirm**', value="confirm a life through the Quiz-Dog bot.\n`Syntax: -confirm <code> <referral>`\n")
-        embed.set_footer(text="Quiz-Dog | -help", icon_url='https://images.emojiterra.com/google/android-oreo/512px/1f171.png')
+        embed.add_field(name='**!help**', value="shows this command with bad gui :stuck_out_tongue:\n`Syntax: -help`\n")
+        embed.add_field(name='**!life**', value="send a life through the Quiz-Dog!\n`Syntax: -life <phone>`\n")
+        embed.add_field(name='**!confirm**', value="confirm a life through the Quiz-Dog bot.\n`Syntax: -confirm <code> <referral>`\n")
+        embed.set_footer(text="Quiz-Dog | !help", icon_url='https://i.imgur.com/K7rEGgK.jpg')
         await bot.send_message(message.channel, embed=embed)
 
     if message.content.startswith("-life"):
@@ -36,11 +36,11 @@ async def on_message(message):
             await bot.send_message(discord.Object(id='450114331661697028'), f".life {phone}")
             await bot.send_message(message.channel, f"<@%s>: Verification code sent to `{phone}`, please use `-confirm <code> <referral>` to queue the life and bark." % message.author.id)
 
-    if message.content.startswith("-confirm"):
+    if message.content.startswith("!confirm"):
         args = message.content.split(" ")
         secondargs = (" ".join(args[1:]))
         if secondargs == "" or not len(args[1]) == 4:
-            await bot.send_message(message.channel, "<@%s>: Invalid arguments. Use `-life <phone>` and then `-confirm <code> <referral>` to queue the life, you don't know what to do hooman." % message.author.id)
+            await bot.send_message(message.channel, "<@%s>: Invalid arguments. Use `!life <phone>` and then `!confirm <code> <referral>` to queue the life, you don't know what to do hooman." % message.author.id)
         else:
             code = args[1]
             referral = args[2]
