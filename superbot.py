@@ -18,9 +18,9 @@ async def on_message(message):
     if message.content.startswith("!help"):
         embed = discord.Embed(title="Quiz-Dog", description="<@%s>: Commands" % message.author.id, color=0x7289DA, icon='https://i.imgur.com/K7rEGgK.jpg')
         embed.set_thumbnail(url="https://i.imgur.com/K7rEGgK.jpg")
-        embed.add_field(name='**!help**', value="shows this command with bad gui :stuck_out_tongue:\n`Syntax: -help`\n")
-        embed.add_field(name='**!life**', value="send a life through the Quiz-Dog!\n`Syntax: -life <phone>`\n")
-        embed.add_field(name='**!confirm**', value="confirm a life through the Quiz-Dog bot.\n`Syntax: -confirm <code> <referral>`\n")
+        embed.add_field(name='**!help**', value="shows this command with bad gui :stuck_out_tongue:\n`Syntax: !help`\n")
+        embed.add_field(name='**!life**', value="send a life through the Quiz-Dog!\n`Syntax: !life <phone>`\n")
+        embed.add_field(name='**!confirm**', value="confirm a life through the Quiz-Dog bot.\n`Syntax: !confirm <code> <referral>`\n")
         embed.set_footer(text="Quiz-Dog | !help", icon_url='https://i.imgur.com/K7rEGgK.jpg')
         await bot.send_message(message.channel, embed=embed)
 
