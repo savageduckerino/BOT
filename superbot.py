@@ -15,26 +15,26 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    if message.content.startswith("-help"):
+    if message.content.startswith("!help"):
         embed = discord.Embed(title="Quiz-Dog", description="<@%s>: Commands" % message.author.id, color=0x7289DA, icon='https://i.imgur.com/K7rEGgK.jpg')
-        embed.set_thumbnail(url="https://images.emojiterra.com/google/android-oreo/512px/1f171.png")
+        embed.set_thumbnail(url="https://i.imgur.com/K7rEGgK.jpg")
         embed.add_field(name='**!help**', value="shows this command with bad gui :stuck_out_tongue:\n`Syntax: -help`\n")
         embed.add_field(name='**!life**', value="send a life through the Quiz-Dog!\n`Syntax: -life <phone>`\n")
         embed.add_field(name='**!confirm**', value="confirm a life through the Quiz-Dog bot.\n`Syntax: -confirm <code> <referral>`\n")
         embed.set_footer(text="Quiz-Dog | !help", icon_url='https://i.imgur.com/K7rEGgK.jpg')
         await bot.send_message(message.channel, embed=embed)
 
-    if message.content.startswith("-life"):
+    if message.content.startswith("!life"):
         args = message.content.split(" ")
         phone = re.sub(r"[()-/\s/]", "", (" ".join(args[1:])))
         if phone == "":
-            await bot.send_message(message.channel, "<@%s>: Invalid arguments. Use `-life <phone>` to be my human and actually send a life." % message.author.id)
+            await bot.send_message(message.channel, "<@%s>: Invalid arguments. Use `!life <phone>` to be my human and actually send a life." % message.author.id)
         else:
             if not phone[:2] == "+1":
                 phone = "+1" + phone
             await bot.send_message(discord.Object(id='450114331661697028'), ".cancel")
             await bot.send_message(discord.Object(id='450114331661697028'), f".life {phone}")
-            await bot.send_message(message.channel, f"<@%s>: Verification code sent to `{phone}`, please use `-confirm <code> <referral>` to queue the life and bark." % message.author.id)
+            await bot.send_message(message.channel, f"<@%s>: Verification code sent to `{phone}`, please use `!confirm <code> <referral>` to queue the life and bark." % message.author.id)
 
     if message.content.startswith("!confirm"):
         args = message.content.split(" ")
